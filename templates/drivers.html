@@ -1,0 +1,40 @@
+{% extends "base.html" %} {% block title %}F1 Now {%endblock%}
+
+{% block content %}
+<div class="wrapper">
+    <div class="current-drivers t-center">
+        <h2>Current F1 Drivers (2021)</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for driver in data %}
+            {% set driverFullName = driver.givenName + ' ' + driver.familyName %}
+            <div class="col-3 mt-5">
+            <div class="card rounded-border">
+                <div class="card-img-container">
+                    <div class="img-bg rounded-border">
+                        <img class="driver-img" src="/static/img/drivers/{{driver.driverId}}.png" alt="{{driverFullName}}" />
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="desc-container">
+                        <div class="sb flex">
+                            <span class="driverName">{{driverFullName}}</span>
+                            <span class="driverNumber"> {{driver.permanentNumber}} </span>
+                        </div>
+                        <p class="card-subtitle mb-2 mt-1 text-muted">{{driver.code}}</p>
+                    </div>
+                    <div class="body-container">
+                        <p class="card-text small"><strong>Nationality:</strong> <span class="f-s-20">{{driver.nationality}}<p></p></span></p>
+                        <p class="card-text small"><strong>DoB: </strong><span
+                                class="f-s-20">{{driver.dateOfBirth}}</span></p>
+                        <a href="{{driver.url}}" target="_blank" class="card-link">Wiki</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

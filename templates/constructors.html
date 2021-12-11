@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block title %}F1 Now {%endblock%}
+
+{% block content %}
+<div class="wrapper">
+    <div class="current-drivers t-center">
+        <h2>Current F1 Teams (2021)</h2>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for constructor in data %}
+            <div class="col-4 mt-5">
+            <div class="card rounded-border">
+                <div class="card-img-container">
+                    <div class="img-bg rounded-border">
+                        <img class="constructor-img rounded-border" src="/static/img/constructors/{{constructor.constructorId}}.jpg" alt="{{constructor.name}}"/>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="desc-container">
+                        <div class="sb flex">
+                            <span class="driverName">{{constructor.name}}</span>
+                        </div>
+                    </div>
+                    <div class="body-container">
+                        <p class="card-text small"><strong>Nationality:</strong> <span class="f-s-20">{{constructor.nationality}}<p></p></span></p>
+                        <a href="{{constructor.url}}" target="_blank" class="card-link">Wiki</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
